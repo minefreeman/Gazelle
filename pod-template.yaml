@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+spec:
+  imagePullSecrets:
+    - name: regcred
+  containers:
+  - name: jnlp
+    image: jenkins/jnlp-agent:latest-windows-jdk11
+  - name: shell
+    image: mars.51vr.local:8083/windows/servercore:1809
+    command:
+    - powershell
+    args:
+    - Start-Sleep
+    - 999999
+  nodeSelector:
+    beta.kubernetes.io/os: windows
