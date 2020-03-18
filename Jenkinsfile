@@ -5,19 +5,10 @@ pipeline
     {
         stage('Build') 
         {
-            steps 
-        {
-            podTemplate(yamlFile: pod-template.yaml) 
+            steps
             {
-                node(POD_LABEL) 
-                {
-                    container('shell') 
-                    {
-                        powershell 'Get-ChildItem Env: | Sort Name'
-                    }
-                }
+                println 'building'
             }
-        }
         }
         stage('Test')
         {
